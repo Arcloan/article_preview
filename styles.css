@@ -35,23 +35,49 @@ img {
     max-inline-size: 90%;
     background-color: white;
     border-radius: 1em;
+    position: relative;
     display: grid;
     grid-template-rows: [image-start] auto [image-end text-start] auto [text-end];
+
+    @media (min-width: 768px) {
+        grid-template-rows: revert;
+        grid-template-columns: [image-start] auto [image-end text-start] auto [text-end];
+        max-inline-size: 60%;
+    }
 
 }
 
 .img_container {
     grid-area: image;
+
+    @media (min-width: 768px) {
+        block-size: 100%;
+    }
 }
 
 .img_container > img {
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
+
+    @media (min-width: 768px) {
+        height: 100%;
+        object-fit: cover;
+        border-radius: revert;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
 }
 
 .description {
     grid-area: text;
     padding: 2em;
+    
+    @media (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 3em;
+    }
 }
 
 .description > * + * {
@@ -75,6 +101,10 @@ img {
     justify-content: center;
     align-items: center;
     background-color: var(--light-grayish-blue);
+    border: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 svg {
@@ -89,4 +119,62 @@ span, h3 {
 p {
     line-height: 1.5;
     font-weight: 700;
+}
+
+.hidden_mobile.hidden_mobile {
+    display: none;
+}
+
+.share_link {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    position: absolute;
+    padding: 2em;
+    background-color: var(--desaturated-dark-blue);
+}
+
+:is(.share_link, .share_link_desktop) > p {
+    letter-spacing: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+:is(.share_link, .share_link_desktop) > button {
+    background: transparent;
+    border: transparent;
+}
+
+
+.share_link_desktop {
+    background-color: var(--very-dark-grayish-blue);
+    padding: 1em 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75em;
+    border-radius: 1em;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    right: -5em;
+}
+
+.share_link_desktop::after {
+    content: "";
+    position: absolute;
+    border: 1em solid transparent;
+    border-top-color: var(--very-dark-grayish-blue);
+    bottom: -1.75em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hidden_desktop.hidden_desktop {
+    display: none;
 }
