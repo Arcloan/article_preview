@@ -20,11 +20,11 @@
 body {
     min-height: 100vh;
     font-family: "Manrope", sans-serif;
-    display: grid;
-    place-items: center;
     background-color: var(--light-grayish-blue);
     color: var(--grayish-blue);
     font-size: 0.80rem;
+    display: grid;
+    place-items: center;
 }
 
 img {
@@ -42,7 +42,7 @@ img {
     @media (min-width: 768px) {
         grid-template-rows: revert;
         grid-template-columns: [image-start] auto [image-end text-start] auto [text-end];
-        max-inline-size: 60%;
+        max-inline-size: 45%;
     }
 
 }
@@ -113,7 +113,11 @@ svg {
 
 span, h3 {
     font-weight: bold;
-    color: var(--desaturated-dark-blue);
+    color: var(--very-dark-grayish-blue);
+}
+
+h3 {
+    font-size: 1.25rem;
 }
 
 p {
@@ -160,7 +164,7 @@ p {
     gap: 0.75em;
     border-radius: 1em;
     position: absolute;
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
     right: -5em;
 }
